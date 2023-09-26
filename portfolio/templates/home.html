@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<header class="row bg-black">
+    <div class="col-md-4">
+<img src="{% static 'portfolio/user1.jpg' %}" alt="">
+    </div>
+
+    <div class="col-md-8 my-auto">
+        <h1> MI <strong>NUEVO PROYECTO</strong></h1>
+        <h3>LA ERA TECNOLOGICA</h3> 
+        <p>Actualmente, los avances tecnológicos han influido, prácticamente, en todos los niveles de nuestra vida diaria. La revolución tecnológica se evidencia en nuestra cotidianidad a tal punto que no pasa un día sin que estemos en contacto con un dispositivo tecnológico. Así, el ámbito laboral y el educativo no han estado exentos de contar con influencias tecnológicas en la era digital.</p>
+    <a href="{% static 'portfolio/cv.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3">Download CV</a>
+    </div>
+
+</header>
+
+<div class="row my-4 text-center">
+    <h3>LA TECNOLOGIA EN AMBITOS</h3>
+    <p>Es un concepto amplio que abarca una gran variedad de aspectos y disciplinas dentro de la electrónica, el arte o la medicina. Por ejemplo: La creación de robots para la automatización de tareas repetitivas o la clonación animal.</p>
+
+    {% for project in projects %}
+
+    <div class="col-md-4 p-4">
+        <div class="card bg-black card-project">
+            <img src="{{project.image.url}}" alt="{{project.title}}" class="card-img-top"/>
+            <div class="card-body">
+                <h2>{{project.title}}</h2>
+    <p>{{project.description}}</p>
+    {% if project.url %}
+    <a href="{{project.url}}">{{project.url}}</a>
+    
+    {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+    {% endblock %}
+    
+</div>
